@@ -31,7 +31,7 @@ struct LooperSetupView: View {
                 ProgressView("Checking credentials...")
             }
             Spacer()
-            Button("Add Looper") {
+            Button("Legg til Looper") {
                 self.save()
             }
             .buttonStyle(.borderedProminent)
