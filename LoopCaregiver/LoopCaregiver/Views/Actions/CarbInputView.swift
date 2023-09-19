@@ -42,7 +42,7 @@ struct CarbInputView: View {
                         Text(errorText)
                             .foregroundColor(.critical)
                     }
-                    Text("Karbohydratet vil bli lagret uten å akseptere noen anbefalt bolus. Lagring av karbohydrater kan øke automatisk tilførsel av insulin som pr. Loop instillinger.")
+                    Text("Karbohydrater vil bli lagret uten å akseptere noen anbefalt bolus. Lagring av karbohydrater kan øke automatisk tilførsel av insulin som pr. Loop instillinger.")
                         .padding()
                     Button("Lagre uten å gi bolus") {
                         deliverButtonTapped()
