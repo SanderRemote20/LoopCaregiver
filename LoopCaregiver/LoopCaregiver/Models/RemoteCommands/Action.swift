@@ -19,15 +19,15 @@ public enum Action: Codable, Equatable {
     public var actionName: String {
         switch self {
         case .carbsEntry:
-            return "Carbs"
+            return "Karbohydrater"
         case .bolusEntry:
             return "Bolus"
         case .cancelTemporaryOverride:
-            return "Override Cancel"
+            return "Overstyring kansellert"
         case .temporaryScheduleOverride:
-            return "Override"
+            return "Overstyring"
         case .closedLoop:
-            return "Closed Loop"
+            return "Lukket Loop"
         case .autobolus:
             return "Autobolus"
         }
@@ -38,15 +38,15 @@ public enum Action: Codable, Equatable {
         case .carbsEntry(let carbAction):
             return "\(carbAction.amountInGrams)g"
         case .bolusEntry(let bolusAction):
-            return "\(bolusAction.amountInUnits)u"
+            return "\(bolusAction.amountInUnits)e"
         case .cancelTemporaryOverride:
             return ""
         case .temporaryScheduleOverride(let overrideAction):
             return "\(overrideAction.name)"
         case .autobolus(let autobolusAction):
-            return autobolusAction.active ? "Activate" : "Deactivate"
+            return autobolusAction.active ? "Aktiver" : "Deaktiver"
         case .closedLoop(let closeLoopAction):
-            return closeLoopAction.active ? "Activate" : "Deactivate"
+            return closeLoopAction.active ? "Aktiver" : "Deaktiver"
         }
     }
 }
