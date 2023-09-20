@@ -38,7 +38,7 @@ struct BolusInputView: View {
                     }
                     if let deviceDate = remoteDataSource.latestDeviceStatus?.timestamp, remoteDataSource.recommendedBolus != nil {
                         let interval = nowDate.timeIntervalSince(deviceDate)
-                        Text("ADVARSEL: Nye behandlinger kan ha forekommet siden siste anbefalte bolus ble beregnet \(LocalizationUtils.presentableMinutesFormat(timeInterval: interval)) ago.")
+                        Text("ADVARSEL: Nye behandlinger kan ha forekommet siden siste anbefalte bolus ble beregnet \(LocalizationUtils.presentableMinutesFormat(timeInterval: interval)) siden.")
                             .font(.callout)
                             .foregroundColor(.red)
                             .padding()
