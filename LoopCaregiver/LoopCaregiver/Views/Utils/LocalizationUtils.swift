@@ -50,9 +50,9 @@ struct LocalizationUtils {
     
     static func presentableMinutesFormat(timeInterval: TimeInterval) -> String {
         let minutes = Int(timeInterval / 60)
-        var result = "\(minutes) minute"
+        var result = "\(minutter) minutt"
         if minutes == 0 || minutes > 1 {
-            result += "s"
+            result += "er"
         }
         
         return result
