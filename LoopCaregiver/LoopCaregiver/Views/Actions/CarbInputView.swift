@@ -53,7 +53,7 @@ struct CarbInputView: View {
                     .padding()
                     .confirmationDialog("Er du sikker?",
                                         isPresented: $isPresentingConfirm) {
-                        Button("Save \(carbInput)g of carbs for \(looperService.looper.name)?", role: .none) {
+                        Button("Lagre \(carbInput)g med karbohydrater for \(looperService.looper.name)?", role: .none) {
                             deliverConfirmationButtonTapped()
                         }
                         Button("Avbryt", role: .cancel) {}
