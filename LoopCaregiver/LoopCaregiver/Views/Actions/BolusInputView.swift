@@ -204,9 +204,9 @@ enum BolusInputViewError: LocalizedError {
     
     func pluralizeHour(count: Int) -> String {
         if count > 1 {
-            return "hours"
+            return "timer"
         } else {
-            return "hour"
+            return "time"
         }
     }
 }
