@@ -87,7 +87,7 @@ struct HUDView: View {
                         Button {
                             looperPopoverShowing = false
                         } label: {
-                            Text("Ferdig")
+                            Text("Done")
                         }
                     }
                 })
