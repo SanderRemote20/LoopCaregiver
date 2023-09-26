@@ -174,7 +174,7 @@ struct TimelineWrapperView<ChartContent:View>: View {
                 Spacer()
                 Picker("Range", selection: $timelineVisibleLookbackHours) {
                     ForEach(lookbackIntervals, id: \.self) { period in
-                        Text("\(period)e").tag(period)
+                        Text("\(period)t").tag(period)
                     }
                 }
             }
