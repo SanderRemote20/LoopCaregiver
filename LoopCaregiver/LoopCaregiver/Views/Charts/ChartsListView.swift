@@ -116,7 +116,7 @@ struct ChartsListView: View {
         formatter.maximumFractionDigits = maxFractionalDigits
         formatter.numberStyle = .decimal
         let iobString = formatter.string(from: iob as NSNumber) ?? ""
-        return iobString + " U Total"
+        return iobString + " E totalt"
     }
     
     func formattedInsulinDelivery() -> String {
@@ -174,7 +174,7 @@ struct TimelineWrapperView<ChartContent:View>: View {
                 Spacer()
                 Picker("Range", selection: $timelineVisibleLookbackHours) {
                     ForEach(lookbackIntervals, id: \.self) { period in
-                        Text("\(period)h").tag(period)
+                        Text("\(period)e").tag(period)
                     }
                 }
             }
