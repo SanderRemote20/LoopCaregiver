@@ -426,7 +426,7 @@ enum GraphItemType {
         case .bolus:
             return "Bolus"
         case .carb:
-            return "Carbs"
+            return "Karbohydrater"
         }
     }
 }
