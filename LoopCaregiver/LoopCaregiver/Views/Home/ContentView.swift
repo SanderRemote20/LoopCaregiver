@@ -66,7 +66,7 @@ struct HomeView: View {
             HUDView(looperService: looperService, settings: looperService.settings)
                 .padding([.leading, .trailing])
             if let recommendedBolus = remoteDataSource.recommendedBolus {
-                TitleSubtitleRowView(title: "Recommended Bolus", subtitle: LocalizationUtils.presentableStringFromBolusAmount(recommendedBolus) + " E")
+                TitleSubtitleRowView(title: "Anbefalt bolus", subtitle: LocalizationUtils.presentableStringFromBolusAmount(recommendedBolus) + " E")
                     .padding([.bottom, .trailing], 5.0)
             }
             ChartsListView(looperService: looperService, remoteDataSource: remoteDataSource, settings: looperService.settings)
