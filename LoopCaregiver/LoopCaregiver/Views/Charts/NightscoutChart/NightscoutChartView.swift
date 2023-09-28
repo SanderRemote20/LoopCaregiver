@@ -562,7 +562,7 @@ struct GraphItem: Identifiable, Equatable {
             formatter.maximumFractionDigits = maxFractionalDigits
             formatter.numberStyle = .decimal
             let bolusQuantityString = formatter.string(from: amount as NSNumber) ?? ""
-            return bolusQuantityString + "u"
+            return bolusQuantityString + "e"
         case .carb(let amount):
             return "\(amount)g"
         case .egv:
