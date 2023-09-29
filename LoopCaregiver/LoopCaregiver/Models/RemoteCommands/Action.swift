@@ -38,7 +38,7 @@ public enum Action: Codable, Equatable {
         case .carbsEntry(let carbAction):
             return "\(carbAction.amountInGrams)g"
         case .bolusEntry(let bolusAction):
-            return "\(bolusAction.amountInUnits)e"
+            return "\(bolusAction.amountInUnits)E"
         case .cancelTemporaryOverride:
             return ""
         case .temporaryScheduleOverride(let overrideAction):
