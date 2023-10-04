@@ -45,7 +45,7 @@ struct LooperSetupView: View {
         .sheet(isPresented: $isShowingScanner) {
             CodeScannerView(codeTypes: [.qr], simulatedData: simulatedOTP(), completion: handleScan)
         }
-        .navigationTitle("Add Looper")
+        .navigationTitle("Legg til Looper")
         .onAppear(perform: {
             if let simCredentials = accountService.simulatorCredentials() {
                 nightscoutURLFieldText = simCredentials.url.absoluteString
@@ -61,11 +61,11 @@ struct LooperSetupView: View {
         Form {
             Section {
                 VStack {
-                    Text("Name")
+                    Text("Navn")
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     TextField(
-                        "Required",
+                        "Påkrevd",
                         text: $nameFieldText, onCommit:
                             {
                                 self.save()
@@ -78,7 +78,7 @@ struct LooperSetupView: View {
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     TextField(
-                        "Required",
+                        "Påkrevd",
                         text: $nightscoutURLFieldText, onCommit:
                             {
                                 self.save()
@@ -90,7 +90,7 @@ struct LooperSetupView: View {
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     TextField(
-                        "Required",
+                        "Påkrevd",
                         text: $apiSecretFieldText
                     ) {
                         self.save()
@@ -101,14 +101,14 @@ struct LooperSetupView: View {
                     Button {
                         isShowingScanner = true
                     } label: {
-                        Text("Scan QR")
+                        Text("Skann QR")
                     }
                     .buttonStyle(.borderedProminent)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 10)
                 } else {
                     TextField(
-                        "QR Scan",
+                        "QR skanner",
                         text: $qrURLFieldText, onCommit:
                             {
                                 self.save()
@@ -176,20 +176,20 @@ struct LooperSetupView: View {
     func save(nightscoutURLText: String?, name: String?, apiSecret: String?, otpURL: String?) async throws {
         
         guard let name = name, name.count > 0 else {
-            throw AccountViewModelError.genericError(message: "Must enter Looper Name")
+            throw AccountViewModelError.genericError(message: "Må legge inn navn på Looper")
         }
 
         guard let nightscoutURLString = nightscoutURLText?.trimmingCharacters(in: CharacterSet(charactersIn: "/")),
                 let nightscoutURL = URL(string: nightscoutURLString) else {
-            throw AccountViewModelError.genericError(message: "Must enter valid Nightscout URL")
+            throw AccountViewModelError.genericError(message: "Må legge inn gyldig Nightscout URL")
         }
         
         guard let apiSecret = apiSecret?.trimmingCharacters(in: .whitespacesAndNewlines), apiSecret.count > 0 else {
-            throw AccountViewModelError.genericError(message: "Must enter API Secret")
+            throw AccountViewModelError.genericError(message: "Må legge inn API Secret")
         }
         
         guard let otpURL = otpURL, otpURL.count > 0 else {
-            throw AccountViewModelError.genericError(message: "Must enter OTP URL")
+            throw AccountViewModelError.genericError(message: "Må legge inn OTP URL")
         }
 
         let looper = Looper(identifier: UUID(), name: name, nightscoutCredentials: NightscoutCredentials(url: nightscoutURL, secretKey: apiSecret, otpURL: otpURL), lastSelectedDate: Date())
