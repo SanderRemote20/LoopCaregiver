@@ -45,11 +45,11 @@ struct SettingsView: View {
                 timelineSection
                 experimentalSection
             }
-            .navigationBarTitle(Text("Settings"), displayMode: .inline)
+            .navigationBarTitle(Text("Innstillinger"), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
                 self.showSheetView = false
             }) {
-                Text("Done").bold()
+                Text("Ferdig").bold()
             })
             .navigationDestination(
                 for: String.self
@@ -57,7 +57,7 @@ struct SettingsView: View {
                 LooperSetupView(accountService: accountService, settings: settings, path: $path)
             }
         }
-        .confirmationDialog("Are you sure?",
+        .confirmationDialog("Er du sikker?",
                             isPresented: $isPresentingConfirm) {
             Button("Remove \(looperService.looper.name)?", role: .destructive) {
                 do {
@@ -67,10 +67,10 @@ struct SettingsView: View {
                     }
                 } catch {
                     //TODO: Show errors here
-                    print("Error removing loop user")
+                    print("Fjerne loopbruker feilet")
                 }
             }
-            Button("Cancel", role: .cancel) {}
+            Button("Avbryt", role: .cancel) {}
         }
     }
     
@@ -80,7 +80,7 @@ struct SettingsView: View {
                 HStack {
                     Image(systemName: "plus")
                         .foregroundColor(.green)
-                    Text("Add New Looper")
+                    Text("Legg til ny Looper")
                 }
             }
         }
@@ -117,8 +117,8 @@ struct SettingsView: View {
     }
     
     var unitsSection: some View {
-        Section("Units") {
-            Picker("Glucose", selection: $glucosePreference, content: {
+        Section("Enheter") {
+            Picker("Glukose", selection: $glucosePreference, content: {
                 ForEach(GlucoseUnitPrefererence.allCases, id: \.self, content: { item in
                     Text(item.presentableDescription).tag(item)
                 })
@@ -127,8 +127,8 @@ struct SettingsView: View {
     }
     
     var timelineSection: some View {
-        Section("Timeline") {
-            Toggle("Show Prediction", isOn: $timelinePredictionEnabled)
+        Section("Tidslinje") {
+            Toggle("Vis prediksjon", isOn: $timelinePredictionEnabled)
         }
     }
     
@@ -228,9 +228,9 @@ struct SettingsView: View {
     
     var remoteCommandSectionText: String {
         if looperService.settings.remoteCommands2Enabled {
-            return "Remote Commands"
+            return "Fjernkommandoer"
         } else {
-            return "Remote Command Errors"
+            return "Fjernkommandoer feil"
         }
     }
 }
