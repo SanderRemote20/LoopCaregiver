@@ -25,7 +25,7 @@ struct ChartsListView: View {
     
     var body: some View {
         VStack(spacing: 5.0) {
-            ChartWrapperView(title: "Glucose", subtitle: eventualGlucose(), hideLabels: $isInteractingWithPredictedChart) {
+            ChartWrapperView(title: "Blodsukker", subtitle: eventualGlucose(), hideLabels: $isInteractingWithPredictedChart) {
                 if !remoteDataSource.glucoseSamples.isEmpty {
                     PredictedGlucoseChartView(
                         remoteDataSource: remoteDataSource,
@@ -41,12 +41,12 @@ struct ChartsListView: View {
                 }
             }
             ChartWrapperView(
-                title: "Active Insulin",
+                title: "Aktivt insulin",
                 subtitle: remoteDataSource.currentIOB?.formattedIOB() ?? "",
                 hideLabels: $isInteractingWithActiveInsulinChart
             ) {
             }
-            ChartWrapperView(title: "Insulin Delivery", subtitle: formattedInsulinDelivery(), hideLabels: $isInteractingWithInsulinDeliveryChart) {
+            ChartWrapperView(title: "Insulinlevering", subtitle: formattedInsulinDelivery(), hideLabels: $isInteractingWithInsulinDeliveryChart) {
                 DoseChartView(
                     remoteDataSource: remoteDataSource,
                     settings: settings,
@@ -58,7 +58,7 @@ struct ChartsListView: View {
                 )
             }
             .frame(maxHeight: 150.0)
-            ChartWrapperView(title: "Active Carbohydrates", subtitle: remoteDataSource.currentCOB?.formattedCOB() ?? "", hideLabels: $isInteractingWithActiveCarbsChart) {
+            ChartWrapperView(title: "Aktive karbohydrater", subtitle: remoteDataSource.currentCOB?.formattedCOB() ?? "", hideLabels: $isInteractingWithActiveCarbsChart) {
                 /*
                  if remoteDataSource.glucoseSamples.count > 0, remoteDataSource.predictedGlucose.count > 0 {
                  COBChartView(remoteDataSource: remoteDataSource,
@@ -73,7 +73,7 @@ struct ChartsListView: View {
                  }
                  */
             }
-            TimelineWrapperView(title: "Timeline", settings: settings) {
+            TimelineWrapperView(title: "Tidslinje", settings: settings) {
                 HStack {
                     // Using .padding causes the chart overlay GeometryReader to
                     // have an offset that is the padding amount.
@@ -103,7 +103,7 @@ struct ChartsListView: View {
             return ""
         }
         
-        return "Eventually \(eventualGlucose.presentableStringValue(displayUnits: settings.glucoseDisplayUnits, includeShortUnits: true))"
+        return "Etterhvert \(eventualGlucose.presentableStringValue(displayUnits: settings.glucoseDisplayUnits, includeShortUnits: true))"
     }
     
     func formattedInsulinDelivery() -> String {
@@ -166,7 +166,7 @@ struct TimelineWrapperView<ChartContent: View>: View {
                 Spacer()
                 Picker("Range", selection: $timelineVisibleLookbackHours) {
                     ForEach(lookbackIntervals, id: \.self) { period in
-                        Text("\(period)h").tag(period)
+                        Text("\(period)t").tag(period)
                     }
                 }
             }
