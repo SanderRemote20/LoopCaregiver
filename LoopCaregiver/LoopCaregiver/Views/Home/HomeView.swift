@@ -42,8 +42,8 @@ struct HomeView: View {
                 .background(Color.cellBackgroundColor)
             if let recommendedBolus = remoteDataSource.recommendedBolus {
                 TitleSubtitleRowView(
-                    title: "Recommended Bolus",
-                    subtitle: LocalizationUtils.presentableStringFromBolusAmount(recommendedBolus) + " U"
+                    title: "Anbefalt bolus",
+                    subtitle: LocalizationUtils.presentableStringFromBolusAmount(recommendedBolus) + " E"
                 )
                 .padding([.bottom, .trailing], 5.0)
             }
@@ -88,11 +88,11 @@ struct HomeView: View {
                         Button(action: {
                             showOverrideView = false
                         }, label: {
-                            Text("Cancel")
+                            Text("Avbryt")
                         })
                     }
                 }
-                .navigationBarTitle(Text("Custom Preset"), displayMode: .inline)
+                .navigationBarTitle(Text("Overstyring"), displayMode: .inline)
             }
         }
         .sheet(isPresented: $showSettingsView) {
