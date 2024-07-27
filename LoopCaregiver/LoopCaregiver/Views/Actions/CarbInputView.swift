@@ -135,7 +135,7 @@ struct CarbInputView: View {
                     }
                 }
             } label: {
-                Text("Time")
+                Text("Tid")
             }
             
             // TODO: can we get absorption from Loop directly via .slow, .medium, .fast?
