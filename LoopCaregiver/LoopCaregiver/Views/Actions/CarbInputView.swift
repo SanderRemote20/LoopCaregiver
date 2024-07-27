@@ -44,21 +44,21 @@ struct CarbInputView: View {
                             .foregroundColor(.critical)
                             .padding()
                     }
-                    Text("Carbs will be stored without accepting any recommended bolus. Storing carbs may increase automatic insulin delivery per your Loop Settings.")
+                    Text("Karbo vil bli lagret uten å gi anbefalt bolus. Lagring av karbo kan øke automatisk bolus angitt i innstillingene.")
                         .padding()
-                    Button("Save without Bolusing") {
+                    Button("Lagre uten bolus") {
                         deliverButtonTapped()
                     }
                     .buttonStyle(.borderedProminent)
                     .frame(maxWidth: .infinity)
                     .disabled(disableForm())
                     .padding()
-                    .confirmationDialog("Are you sure?",
+                    .confirmationDialog("Er du sikker?",
                                         isPresented: $isPresentingConfirm) {
-                        Button("Save \(carbInput)g of carbs for \(looperService.looper.name)?", role: .none) {
+                        Button("Lagre \(carbInput)g med karbo for \(looperService.looper.name)?", role: .none) {
                             deliverConfirmationButtonTapped()
                         }
-                        Button("Cancel", role: .cancel) {}
+                        Button("Avbryt", role: .cancel) {}
                     }
                 }
                 .disabled(submissionInProgress)
@@ -66,20 +66,20 @@ struct CarbInputView: View {
                     ProgressView()
                 }
             }
-            .navigationBarTitle(Text("Add Carb Entry"), displayMode: .inline)
+            .navigationBarTitle(Text("Legg til karbo"), displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
                 self.showSheetView = false
             }, label: {
-                Text("Cancel")
+                Text("Avbryt")
             })
             )
             .sheet(isPresented: $showDatePickerSheet) {
                 VStack {
-                    Text("Consumption Date")
+                    Text("Dato")
                         .font(.headline)
                         .padding()
                     Form {
-                        DatePicker("Time", selection: $pickerConsumedDate, displayedComponents: [.hourAndMinute, .date])
+                        DatePicker("Tid", selection: $pickerConsumedDate, displayedComponents: [.hourAndMinute, .date])
                             .datePickerStyle(.automatic)
                     }
                 }.presentationDetents([.fraction(1 / 4)])
@@ -103,7 +103,7 @@ struct CarbInputView: View {
                 Text("g")
                     .frame(width: unitFrameWidth)
             } label: {
-                Text("Amount Consumed")
+                Text("Mengde absorbert")
             }
             
             LabeledContent {
@@ -153,7 +153,7 @@ struct CarbInputView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 } label: {
-                    Text("Food Type")
+                    Text("Type mat")
                 }
                 .frame(width: foodTypeWidth, height: 30, alignment: .trailing)
                 Spacer()
@@ -220,7 +220,7 @@ struct CarbInputView: View {
                 Text("hr")
                     .frame(width: unitFrameWidth)
             } label: {
-                Text("Absorption Time")
+                Text("Absorpsjonstid")
             }
         }
     }
@@ -239,10 +239,10 @@ struct CarbInputView: View {
     @MainActor
     private func deliverConfirmationButtonTapped() {
         Task {
-            let message = String(format: NSLocalizedString("Authenticate to Save Carbs", bundle: .main, comment: "The message displayed during a device authentication prompt for carb specification"))
+            let message = String(format: NSLocalizedString("Autentiser for å lagre karbo", bundle: .main, comment: "The message displayed during a device authentication prompt for carb specification"))
             
             guard await authenticationHandler(message) else {
-                errorText = "Authentication required"
+                errorText = "Autentisering kreves"
                 return
             }
             
@@ -365,7 +365,7 @@ enum CarbInputViewError: LocalizedError {
     }
     
     func pluralizeHour(count: Int) -> String {
-        return count > 1 ? "hours" : "hour"
+        return count > 1 ? "timer" : "time"
     }
 }
 
